@@ -15,7 +15,10 @@
     <div class="container">
         <label for="messageState">
             <div class="heart no-anim">
-                <img src="https://commons.wikimedia.org/wiki/File:Envelope-closed_(CoreUI_Icons_v1.0.0).svg">
+                <!-- Inline envelope SVG so it displays correctly instead of linking to a page -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm2 2v.01L12 13l8-6.99V6H4zM4 18h16V8.5l-8 6.25-8-6.25V18z" fill="currentColor"/>
+                </svg>
             </div>
         </label>
         <div class="message closed no-anim">

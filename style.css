@@ -40,14 +40,16 @@ body {
     cursor: pointer;
 }
 
-.heart > img {
-    width: 50px; 
+.heart > img,
+.heart > svg {
+    width: 50px;
     height: auto;
     animation-name: beat;
     animation-duration: 2s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-play-state: running;
+    display: inline-block;
 }
 
 @keyframes beat {
