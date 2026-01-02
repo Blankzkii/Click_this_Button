@@ -1,126 +1,111 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: 'Quicksand', sans-serif;
-    overflow: hidden;
-}
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-.container {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    background-color: white;
-    transition: background-color 0.8s ease;
-}
+        .container {
+            position: relative;
+            max-width: 600px;
+            width: 100%;
+        }
 
-.instruction {
-    position: absolute;
-    top: 53%;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #d4a5a5;
-    font-size: 18px;
-    text-align: center;
-    z-index: 2;
-    transition: opacity 0.6s ease;
-}
+        .instruction {
+            text-align: center;
+            color: #d4849c;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
 
-/* HEART */
-.heart {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    cursor: pointer;
-}
+        .heart {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background: #e8b4c8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
 
-/* ENVELOPE SVG (notification-style pulse) */
-.envelope {
-    width: 64px;
-    height: 64px;
-    fill: none;
-    stroke: #d4a5a5;
-    stroke-width: 1.8;
-    animation: notifyPulse 4s ease-in-out infinite;
-}
+        .heart:hover {
+            transform: scale(1.05);
+        }
 
-/* SLOW, SUBTLE NOTIFICATION PULSE */
-@keyframes notifyPulse {
-    0% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 0 rgba(212, 165, 165, 0));
-    }
-    50% {
-        transform: scale(1.06);
-        filter: drop-shadow(0 0 10px rgba(212, 165, 165, 0.6));
-    }
-    100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 0 rgba(212, 165, 165, 0));
-    }
-}
+        .envelope {
+            width: 80px;
+            height: 80px;
+        }
 
-/* MESSAGE */
-.message {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    background-color: white;
-    padding: 40px 50px;
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    max-width: 500px;
-    width: 90%;
-    opacity: 0;
-    transition: all 0.6s ease;
-    z-index: 3;
-}
+        .env-body {
+            fill: #fff;
+            stroke: #d4849c;
+            stroke-width: 1.5;
+        }
 
-.message h1 {
-    margin-bottom: 20px;
-    color: #333;
-}
+        .env-line {
+            fill: none;
+            stroke: #d4849c;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+        }
 
-.message p {
-    line-height: 1.8;
-    color: #555;
-    font-size: 16px;
-}
+        .message {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(212, 132, 156, 0.2);
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
 
-.sincere {
-    margin-top: 10px;
-}
+        #messageState:checked ~ .container .message {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
 
-.sincere p {
-    margin: 5px 0;
-}
+        #messageState:checked ~ .container .heart {
+            transform: scale(0.95);
+            opacity: 0.7;
+        }
 
-/* CHECKED STATE */
-#messageState:checked ~ .container {
-    background-color: rgb(252, 228, 236);
-}
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: #d4849c;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
 
-#messageState:checked ~ .container .heart {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-}
+        p {
+            color: #5a5a5a;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
 
-/* STOP PULSE WHEN OPENED */
-#messageState:checked ~ .container .envelope {
-    animation: none;
-}
+        .sincere {
+            margin-top: 2rem;
+            text-align: right;
+            font-style: italic;
+            color: #d4849c;
+        }
 
-#messageState:checked ~ .container .message {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-}
-
-#messageState:checked ~ .instruction {
-    opacity: 0;
-}
+        .sincere p {
+            margin: 0.5rem 0;
+        }
