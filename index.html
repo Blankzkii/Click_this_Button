@@ -3,48 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Letter</title>
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Font Awesome (optional, safe to keep) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        body {
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+        }
 
-    <!-- Your CSS -->
-    <link rel="stylesheet" href="style.css">
+        .container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background-color: white;
+            transition: background-color 0.8s ease;
+        }
+
+        .instruction {
+            position: absolute;
+            top: 53%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d4a5a5;
+            font-size: 18px;
+            text-align: center;
+            z-index: 2;
+            transition: opacity 0.6s ease;
+        }
+
+        .heart {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .envelope {
+            width: 64px;
+            height: 64px;
+            animation: notifyPulse 4s ease-in-out infinite;
+        }
+
+        .env-body {
+            fill: white;
+            stroke: #d4a5a5;
+            stroke-width: 1.8;
+        }
+
+        .env-line {
+            fill: none;
+            stroke: #d4a5a5;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @keyframes notifyPulse {
+            0% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 0 rgba(212, 165, 165, 0));
+            }
+            50% {
+                transform: scale(1.06);
+                filter: drop-shadow(0 0 10px rgba(212, 165, 165, 0.6));
+            }
+            100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 0 rgba(212, 165, 165, 0));
+            }
+        }
+
+        .message {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background-color: white;
+            padding: 40px 50px;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 90%;
+            opacity: 0;
+            transition: all 0.6s ease;
+            z-index: 3;
+        }
+
+        .message h1 {
+            margin-bottom: 20px;
+            color: #333;
+            font-family: 'Cinzel', serif;
+        }
+
+        .message p {
+            line-height: 1.8;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .sincere {
+            margin-top: 10px;
+        }
+
+        .sincere p {
+            margin: 5px 0;
+        }
+
+        #messageState:checked ~ .container {
+            background-color: rgb(252, 228, 236);
+        }
+
+        #messageState:checked ~ .container .heart {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+        }
+
+        #messageState:checked ~ .container .envelope {
+            animation: none;
+        }
+
+        #messageState:checked ~ .container .message {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        #messageState:checked ~ .container .instruction {
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
-
-    <!-- Checkbox controller -->
     <input id="messageState" type="checkbox" hidden>
 
     <div class="container">
-
-        <!-- Instruction -->
         <p class="instruction">Click the heart!</p>
 
-        <!-- Envelope -->
         <label for="messageState">
             <div class="heart" role="button" aria-label="Open letter">
                 <svg class="envelope" viewBox="0 0 24 24" aria-hidden="true"> 
-
-    <rect x="2" y="4" width="20" height="16" rx="2" ry="2" class="env-body"/> 
-
-    <path d="M2 6l10 7 10-7" class="env-line"/> 
-
-    <path d="M2 18l8-6" class="env-line"/> 
-
-    <path d="M22 18l-8-6" class="env-line"/> 
-
-</svg>
+                    <rect x="2" y="4" width="20" height="16" rx="2" ry="2" class="env-body"/> 
+                    <path d="M2 6l10 7 10-7" class="env-line"/> 
+                    <path d="M2 18l8-6" class="env-line"/> 
+                    <path d="M22 18l-8-6" class="env-line"/> 
+                </svg>
             </div>
         </label>
 
-        <!-- Message -->
         <div class="message">
             <h1>Dear Crush,</h1>
             <p>
@@ -62,11 +176,6 @@
                 <p>Your Admirer</p>
             </div>
         </div>
-
     </div>
-
-    <!-- Optional JS (safe to remove) -->
-    <script defer src="valentine-confession.js"></script>
-
 </body>
 </html>
