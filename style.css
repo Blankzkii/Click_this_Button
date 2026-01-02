@@ -43,10 +43,10 @@ body {
 .envelope {
     width: 64px;
     height: 64px;
-    fill: #d4a5a5;
-    display: block;
+    fill: none;
+    stroke: #d4a5a5;
+    stroke-width: 1.8;
     animation: notifyPulse 4s ease-in-out infinite;
-    will-change: transform, filter;
 }
 
 /* SLOW, SUBTLE NOTIFICATION PULSE */
