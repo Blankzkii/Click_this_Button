@@ -39,20 +39,30 @@ body {
     cursor: pointer;
 }
 
-/* FIXED SVG DISPLAY + ANIMATION */
-.heart img {
-    width: 60px;
-    height: auto;
-    display: block;                 /* IMPORTANT */
-    animation: beat 2s ease-in-out infinite;
-    will-change: transform;         /* smoother animation */
+/* ENVELOPE SVG (notification-style pulse) */
+.envelope {
+    width: 64px;
+    height: 64px;
+    fill: #d4a5a5;
+    display: block;
+    animation: notifyPulse 4s ease-in-out infinite;
+    will-change: transform, filter;
 }
 
-/* SAFER ANIMATION */
-@keyframes beat {
-    0%, 100% { transform: scale(1); }
-    25% { transform: scale(1.15); }
-    50% { transform: scale(1); }
+/* SLOW, SUBTLE NOTIFICATION PULSE */
+@keyframes notifyPulse {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 rgba(212, 165, 165, 0));
+    }
+    50% {
+        transform: scale(1.06);
+        filter: drop-shadow(0 0 10px rgba(212, 165, 165, 0.6));
+    }
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 rgba(212, 165, 165, 0));
+    }
 }
 
 /* MESSAGE */
@@ -99,6 +109,11 @@ body {
 #messageState:checked ~ .container .heart {
     transform: translate(-50%, -50%) scale(0);
     opacity: 0;
+}
+
+/* STOP PULSE WHEN OPENED */
+#messageState:checked ~ .container .envelope {
+    animation: none;
 }
 
 #messageState:checked ~ .container .message {
