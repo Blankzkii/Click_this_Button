@@ -353,5 +353,5 @@
 
 .music-toggle:hover .music-icon,
 .music-toggle:hover .music-off-icon {
-    stroke: white;
+    stroke: rgb(0, 0, 0);
 }
