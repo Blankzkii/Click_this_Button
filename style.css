@@ -44,7 +44,7 @@ body {
     width: 64px;
     height: 64px;
     fill: none;
-    stroke: #000000;
+    stroke: #d4a5a5;
     stroke-width: 1.8;
     animation: notifyPulse 4s ease-in-out infinite;
 }
