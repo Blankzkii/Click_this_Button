@@ -107,6 +107,9 @@
             opacity: 0;
             transform: translateY(20px);
             margin-bottom: 15px;
+            text-align: justify;
+            text-justify: inter-word; 
+
         }
 
         .sincere {
