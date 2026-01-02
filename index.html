@@ -1,44 +1,65 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+
     <title>Letter</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (optional, safe to keep) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input id="messageState" type="checkbox" style="display:none">
-    
-    <p class="instruction">Click the heart!</p>
+
+    <!-- Checkbox controller -->
+    <input id="messageState" type="checkbox" hidden>
+
     <div class="container">
+
+        <!-- Instruction -->
+        <p class="instruction">Click the heart!</p>
+
+        <!-- Envelope -->
         <label for="messageState">
-            <div class="heart no-anim">
+            <div class="heart" role="button" aria-label="Open letter">
                 <svg class="envelope" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M2 4h20v16H2z" />
-                    <path d="M2 4l10 7 10-7" />
+                    <path d="M2 4h20v16H2z"/>
+                    <path d="M2 4l10 7 10-7"/>
                 </svg>
             </div>
         </label>
-        <div class="message closed no-anim">
-            <h1 style="font-family: Cinzel, serif; font-size: 40px; letter-spacing: 1.2px;">Dear Crush,</h1>
-            <p> 
+
+        <!-- Message -->
+        <div class="message">
+            <h1>Dear Crush,</h1>
+            <p>
                 <span>
                     I've been keeping this in for a while, but I think Valentine's Day is the perfect time to say it—you're the reason my days feel brighter. Every little moment with you means more than I can put into words. Your smile, your laughter, the way you make everything feel lighter—it all makes my heart race in the best way possible.
                 </span>
-                <br> <br>
+                <br><br>
                 <span>
                     So, here it is… I like you, a lot. Maybe even love. Would you be my Valentine? No matter your answer, I just wanted you to know how special you are to me. You've filled my heart with warmth in ways I never expected, and for that, I'm grateful. But if you say yes, I promise to make every day feel like Valentine's Day for you—to cherish you, to make you smile, and to remind you just how much you mean to me.
-                </span>      
+                </span>
             </p>
-            <br>
+
             <div class="sincere">
-                <p style="font-weight: bold;"> With Love,</p>
+                <p><strong>With Love,</strong></p>
                 <p>Your Admirer</p>
             </div>
         </div>
+
     </div>
+
+    <!-- Optional JS (safe to remove) -->
     <script defer src="valentine-confession.js"></script>
+
 </body>
 </html>
