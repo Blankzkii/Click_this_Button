@@ -7,234 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Quicksand', sans-serif;
-            overflow: hidden;
-        }
-
-        .container {
-            width: 100vw;
-            height: 100vh;
-            position: relative;
-            background-color: white;
-            transition: background-color 0.8s ease;
-        }
-
-        .instruction {
-            position: absolute;
-            top: 53%;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #d4a5a5;
-            font-size: 18px;
-            text-align: center;
-            z-index: 2;
-            transition: opacity 0.6s ease;
-        }
-
-        .heart {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            cursor: pointer;
-        }
-
-        .envelope {
-            width: 64px;
-            height: 64px;
-            animation: notifyPulse 4s ease-in-out infinite;
-        }
-
-        .env-body {
-            fill: white;
-            stroke: #d4a5a5;
-            stroke-width: 1.8;
-        }
-
-        .env-line {
-            fill: none;
-            stroke: #d4a5a5;
-            stroke-width: 1.8;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        @keyframes notifyPulse {
-            0% {
-                transform: scale(1);
-                filter: drop-shadow(0 0 0 rgba(212, 165, 165, 0));
-            }
-            50% {
-                transform: scale(1.06);
-                filter: drop-shadow(0 0 10px rgba(212, 165, 165, 0.6));
-            }
-            100% {
-                transform: scale(1);
-                filter: drop-shadow(0 0 0 rgba(212, 165, 165, 0));
-            }
-        }
-
-        .message {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background-color: white;
-            padding: 40px 50px;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            opacity: 0;
-            transition: all 0.6s ease;
-            z-index: 3;
-        }
-
-        .message h1 {
-            margin-bottom: 20px;
-            color: #333;
-            font-family: 'Cinzel', serif;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-        }
-
-        .message p {
-            line-height: 1.8;
-            color: #555;
-            font-size: 16px;
-        }
-
-        .message p span {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .sincere {
-            margin-top: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .sincere p {
-            margin: 5px 0;
-        }
-
-        #messageState:checked ~ .container {
-            background-color: rgb(252, 228, 236);
-        }
-
-        #messageState:checked ~ .container .heart {
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 0;
-        }
-
-        #messageState:checked ~ .container .envelope {
-            animation: none;
-        }
-
-        #messageState:checked ~ .container .message {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-        }
-
-        #messageState:checked ~ .container .message h1 {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.3s;
-        }
-
-        #messageState:checked ~ .container .message p span:nth-child(1) {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.8s ease 0.6s;
-        }
-
-        #messageState:checked ~ .container .message p span:nth-child(3) {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.8s ease 1.2s;
-        }
-
-        #messageState:checked ~ .container .message .sincere {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.8s ease 1.8s;
-        }
-
-        #messageState:checked ~ .container .instruction {
-            opacity: 0;
-        }
-
-        /* Rose Petals */
-        .petal {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: radial-gradient(ellipse at center, #ff9db5 0%, #ffb3c6 50%, #ffc4d6 100%);
-            border-radius: 50% 0 50% 0;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        @keyframes fall {
-            0% {
-                opacity: 0.8;
-                transform: translateY(-100px) rotate(0deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-
-        @keyframes sway {
-            0%, 100% {
-                transform: translateX(0);
-            }
-            50% {
-                transform: translateX(30px);
-            }
-        }
-
-        #messageState:checked ~ .container .petal {
-            animation: fall linear infinite, sway 3s ease-in-out infinite;
-        }
-
-        .petal:nth-child(1) { left: 10%; animation-duration: 8s, 3s; animation-delay: 0s, 0s; }
-        .petal:nth-child(2) { left: 20%; animation-duration: 10s, 4s; animation-delay: 0.5s, 0.5s; }
-        .petal:nth-child(3) { left: 30%; animation-duration: 9s, 3.5s; animation-delay: 1s, 1s; }
-        .petal:nth-child(4) { left: 40%; animation-duration: 11s, 4.5s; animation-delay: 1.5s, 1.5s; }
-        .petal:nth-child(5) { left: 50%; animation-duration: 8.5s, 3s; animation-delay: 2s, 2s; }
-        .petal:nth-child(6) { left: 60%; animation-duration: 10.5s, 4s; animation-delay: 0.3s, 0.3s; }
-        .petal:nth-child(7) { left: 70%; animation-duration: 9.5s, 3.5s; animation-delay: 0.8s, 0.8s; }
-        .petal:nth-child(8) { left: 80%; animation-duration: 11.5s, 4.5s; animation-delay: 1.3s, 1.3s; }
-        .petal:nth-child(9) { left: 90%; animation-duration: 8.8s, 3s; animation-delay: 1.8s, 1.8s; }
-        .petal:nth-child(10) { left: 15%; animation-duration: 10.2s, 4s; animation-delay: 2.3s, 2.3s; }
-        .petal:nth-child(11) { left: 25%; animation-duration: 9.2s, 3.5s; animation-delay: 0.2s, 0.2s; }
-        .petal:nth-child(12) { left: 35%; animation-duration: 11.2s, 4.5s; animation-delay: 0.7s, 0.7s; }
-        .petal:nth-child(13) { left: 45%; animation-duration: 8.7s, 3s; animation-delay: 1.2s, 1.2s; }
-        .petal:nth-child(14) { left: 55%; animation-duration: 10.7s, 4s; animation-delay: 1.7s, 1.7s; }
-        .petal:nth-child(15) { left: 65%; animation-duration: 9.7s, 3.5s; animation-delay: 2.2s, 2.2s; }
-        .petal:nth-child(16) { left: 75%; animation-duration: 11.7s, 4.5s; animation-delay: 0.4s, 0.4s; }
-        .petal:nth-child(17) { left: 85%; animation-duration: 8.3s, 3s; animation-delay: 0.9s, 0.9s; }
-        .petal:nth-child(18) { left: 95%; animation-duration: 10.3s, 4s; animation-delay: 1.4s, 1.4s; }
-        .petal:nth-child(19) { left: 5%; animation-duration: 9.3s, 3.5s; animation-delay: 1.9s, 1.9s; }
-        .petal:nth-child(20) { left: 50%; animation-duration: 11.3s, 4.5s; animation-delay: 2.4s, 2.4s; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <input id="messageState" type="checkbox" hidden>
@@ -262,8 +35,7 @@
         <div class="petal"></div>
         <div class="petal"></div>
 
-        <p class="instruction">Click the heart!</p>
-
+        <p class="instruction">Take your time... No Rush...</p>
         <label for="messageState">
             <div class="heart" role="button" aria-label="Open letter">
                 <svg class="envelope" viewBox="0 0 24 24" aria-hidden="true"> 
@@ -276,22 +48,23 @@
         </label>
 
         <div class="message">
-            <h1>Dear Crush,</h1>
-            <p>
-                <span>
-                    I've been keeping this in for a while, but I think Valentine's Day is the perfect time to say it—you're the reason my days feel brighter. Every little moment with you means more than I can put into words. Your smile, your laughter, the way you make everything feel lighter—it all makes my heart race in the best way possible.
-                </span>
-                <br><br>
-                <span>
-                    So, here it is… I like you, a lot. Maybe even love. Would you be my Valentine? No matter your answer, I just wanted you to know how special you are to me. You've filled my heart with warmth in ways I never expected, and for that, I'm grateful. But if you say yes, I promise to make every day feel like Valentine's Day for you—to cherish you, to make you smile, and to remind you just how much you mean to me.
-                </span>
+            <h1>Dear Krizel,</h1>
+            <p class="paragraph-1">
+               Hey Kriz time flies past real fast, we've been friends for like 5 months already and it's already 2026. Honestly, I didn't expect us to stay friends this long since I'm used to getting ghosted or people ditching me once they've had their fill of entertainment. But to my surprise, you didn't. At first, I thought you'd be a great friend and my best duo in Valorant and nothing more, but something in my mind was stirred and bloomed... then boom, I had a crush on you. It didn't stop there. Ever since we started hanging out more often and playing together, I realized that this is more than a crush now. Since you like getting letters, I decided to make one using my programming skills LMAO. It ain't much, but this is what I could come up with in a short amount of time. I tried to learn more about you, like how you'd rather have someone confess and court you instead of being the one to confess, which is understandable. So here I am, shooting my shot from the fucking Milky Way over to your heart.
+
+
+            </p>
+            <p class="paragraph-2">
+              Krizel, I really like you to the point that a day without you feels bland or lacking. Even with friends playing and talking to me, something feels missing, and it's you. Hanging out with you and talking to you makes my day, and even when you get your "Topak," I'd still stay and wait for you to reply back to me. You are funny, clumsy, easy to be agitated, and also "lutang" sometimes and trust me it is not a bad thing, you are very super cute when you are you. So don't change this much this year okayyy. I know I'm not handsome or "singkit" like Hemerson or Darren Espanto. Obviously, I don't have anemo powers like Venti, but trust me, I would treat you like you are my world and my everything. We may have some ups and downs, but that's what relationships are all about—accepting each other's flaws. I know I'm not perfect, but I will do my damn best to make you happy and proud that I am your boyfriend. At this point, I really want to see you and hold your hand for this, but I know you need to recharge in order to go out and see me, and I am fine with it. I'll be patient for you. Also, this letter is not about us being in a relationship or dating immediately, but this letter is a request for me to court you with the intention of wanting to date you. This might be too early to say but Krizel I love you and I really want to go out with you please.
             </p>
 
             <div class="sincere">
                 <p><strong>With Love,</strong></p>
-                <p>Your Admirer</p>
+                <p>Sam</p>
             </div>
         </div>
     </div>
+
+    
 </body>
 </html>
