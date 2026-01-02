@@ -1,12 +1,12 @@
-// Optional: Add smooth animations
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const heart = document.querySelector('.heart');
     const message = document.querySelector('.message');
-    const instruction = document.querySelector('.instruction');
-    
-    // Remove no-anim class after page loads
+
+    // Prevent animation flash on load
+    heart.classList.add('no-anim');
+
+    // Enable animation after short delay
     setTimeout(() => {
         heart.classList.remove('no-anim');
-        message.classList.remove('no-anim');
-    }, 100);
+    }, 300);
 });
