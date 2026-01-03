@@ -83,44 +83,6 @@
         </div>
     </div>
 
-    <script>
-        const messageState = document.getElementById('messageState');
-        const bgMusic = document.getElementById('bgMusic');
-        const musicToggle = document.getElementById('musicToggle');
-        const musicIcon = document.querySelector('.music-icon');
-        const musicOffIcon = document.querySelector('.music-off-icon');
-        let isMusicPlaying = false;
-        bgMusic.volume = 0.1;
-        // Play music immediately when letter is opened
-        messageState.addEventListener('change', function() {
-            if (this.checked) {
-                bgMusic.play().then(() => {
-                    isMusicPlaying = true;
-                    musicIcon.style.display = 'block';
-                    musicOffIcon.style.display = 'none';
-                }).catch(e => {
-                    console.log('Autoplay prevented:', e);
-                    // If autoplay fails, show music button immediately
-                    isMusicPlaying = false;
-                });
-            }
-        });
-
-        // Toggle music on button click
-        musicToggle.addEventListener('click', function() {
-            if (isMusicPlaying) {
-                bgMusic.pause();
-                musicIcon.style.display = 'none';
-                musicOffIcon.style.display = 'block';
-                isMusicPlaying = false;
-            } else {
-                bgMusic.play().then(() => {
-                    musicIcon.style.display = 'block';
-                    musicOffIcon.style.display = 'none';
-                    isMusicPlaying = true;
-                }).catch(e => console.log('Play prevented:', e));
-            }
-        });
-    </script>
+    <script src="valentine-confession.js" defer></script>
 </body>
 </html>
