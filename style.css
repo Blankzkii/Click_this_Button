@@ -27,7 +27,7 @@ body {
     text-align: center;
     z-index: 2;
     opacity: 0;
-    animation: fadeInGlow 4s cubic-bezier(0.22, 1, 0.36, 1) forwards 6s;
+    animation: fadeInGlow 8s cubic-bezier(0.22, 1, 0.36, 1) forwards 10.5s;
     text-shadow: 0 0 20px rgba(212, 165, 165, 0.8);
 }
 
@@ -50,7 +50,7 @@ body {
     z-index: 1;
     cursor: pointer;
     opacity: 0;
-    animation: envelopeAppear 4s cubic-bezier(0.22, 1, 0.36, 1) forwards 6s;
+    animation: envelopeAppear 8s cubic-bezier(0.22, 1, 0.36, 1) forwards 10.5s;
 }
 
 @keyframes envelopeAppear {
